@@ -13,15 +13,17 @@ body {
 
 .navbar {
   float: left;
-  width: 20%;
   left: 0;
+  height: 100%;
+  width: 100%;
+
 }
 
 .navbar-links {
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 150px;
+  width: 100%;
   border: 1px solid #555;
   left: 0;
 }
@@ -64,7 +66,6 @@ body {
 .wrapper-content {
   grid-column: 2 / 5;
   grid-row: 1 / 3;
-  background-color: aliceblue;
 }
 
 .wrapper-footer {
