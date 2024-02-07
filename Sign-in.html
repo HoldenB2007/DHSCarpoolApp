@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 <html>
-
+<script src="JavaScript.js"></script>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,15 +41,15 @@
         <input type="email" placeholder="Email" id="email-input-sign-in">
         <label for="password-input-sign-in">Password: </label>
         <input type="password" placeholder="Password" id="password-input-sign-in">
-        <button id="sign-in-btn">Sign-In</button>
+        <button id="sign-in-btn" onclick="signIn()">Sign-In</button>
     </fieldset>
     <!-- Sign up Box-->
     <fieldset id="sign-up-box">
         <legend>Sign-Up</legend>
-        <label for="email-input-sign-up">Email: </label>"
+        <label for="email-input-sign-up">Email: </label>
         <input type="email" placeholder="Email" id="email-input-sign-up">
-        <label for="password-input-sign-in.label">Password: </label>
-        <input type="password" placeholder="Password" id="password-input-sign-in.label">
+        <label for="password-input-sign-up">Password: </label>
+        <input type="password" placeholder="Password" id="password-input-sign-up">
         <label for="sign-up-student-number">Student Number: </label>
         <input type="number" placeholder="8 Digits" id="sign-up-student-number">
         <label for="sign-up-parent-email">Parent Email: </label>
@@ -59,7 +59,7 @@
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
-        <button id="sign-up-btn">Sign Up</button>
+        <button id="sign-up-btn" onclick="SignUpFunction">Sign Up</button>
     </fieldset>
 </aside>
     </div>
