@@ -1,17 +1,15 @@
-var currentUserIndex = -1;
-var allUsersPasswords = [];
-var allUsersGender = [];
-var allUsersParentEmail = [];
-var allUsersEmail = [];
-var studentNumbers = [123]
 
-function signout () {
-    window.location.replace("./Sign-in.html");
-    currentUserIndex = -1;
-}
+
+
+//Sign-in/up code
+var currentUserIndex = -1;
+var allUsersPasswords = ["password123"];
+var allUsersGender = ["male"];
+var allUsersParentEmail = ["bronsonbrett518@gmail.com"];
+var allUsersEmail = ["holdenbronson@gmail.com"];
+var studentNumbers = ["1", 2, 3]
 
 function signIn () {
-    window.location.replace("./home.html");
     var possibleUserEmail = document.getElementById("email-input-sign-in").value;
     var possiblePassword = document.getElementById("password-input-sign-in").value;
     var possibleUserIndex = -1;
@@ -33,7 +31,6 @@ function signIn () {
 }
 
 function SignUpFunction () {
-    window.location.replace("./home.html");
     var newUserEmail = document.getElementById("email-input-sign-up").value;
     var newUserPassword = document.getElementById("password-input-sign-up").value;
     var newUserStudentNum = document.getElementById("sign-up-student-number").value;
@@ -51,18 +48,30 @@ function SignUpFunction () {
     for (var p = 0; p < studentNumbers.length; p++) {
         if (newUserStudentNum === studentNumbers[p]) {
             validStuNum = true;
-        } else {
-            alert("Invalid Student Number");
         }
+    }
+    if (validStuNum === false) {
+        alert("Invalid Student Number");
     }
     if ((validStuNum === true) && (previousUser === false)) {
         allUsersPasswords.push(newUserPassword);
         allUsersGender.push(newUserGender);
         allUsersParentEmail.push(newUserParentEmail);
         allUsersEmail.push(newUserEmail);
-
         window.location.replace("./home.html");
         currentUserIndex = allUsersEmail.length - 1;
     }
 }
 
+
+//Sign-out code
+function signout () {
+    window.location.replace("./Sign-in.html");
+    currentUserIndex = -1;
+}
+
+
+//Reqest Ride Function
+function requestRide () {
+
+}
