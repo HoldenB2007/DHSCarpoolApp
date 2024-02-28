@@ -37,29 +37,33 @@
     <!-- Sign in Box-->
     <fieldset id="sign-in-box">
         <legend>Sign-In</legend>
+        <form>
         <label for="email-input-sign-in">Email: </label>
-        <input type="email" placeholder="Email" id="email-input-sign-in">
+        <input type="email" placeholder="Email" id="email-input-sign-in" name="email">
         <label for="password-input-sign-in">Password: </label>
-        <input type="password" placeholder="Password" id="password-input-sign-in">
-        <button id="sign-in-btn" onclick="signIn()">Sign-In</button>
+        <input type="password" placeholder="Password" id="password-input-sign-in" name="password">
+        <input type="submit" id="sign-in-btn" formaction="/signIn"/>
+    </form>
     </fieldset>
     <!-- Sign up Box-->
     <fieldset id="sign-up-box">
         <legend>Sign-Up</legend>
+        <form>
         <label for="email-input-sign-up">Email: </label>
-        <input type="email" placeholder="Email" id="email-input-sign-up">
+        <input type="email" placeholder="Email" id="email-input-sign-up" name='email'>
         <label for="password-input-sign-up">Password: </label>
-        <input type="password" placeholder="Password" id="password-input-sign-up">
+        <input type="password" placeholder="Password" id="password-input-sign-up" name='password'>
         <label for="sign-up-student-number">Student Number: </label>
-        <input type="number" placeholder="8 Digits" id="sign-up-student-number">
+        <input type="number" placeholder="8 Digits" id="sign-up-student-number" name='studentNumber'>
         <label for="sign-up-parent-email">Parent Email: </label>
-        <input type="email" placeholder="Parent/Guardian Email" id="sign-up-parent-email">
+        <input type="email" placeholder="Parent/Guardian Email" id="sign-up-parent-email" name='parentEmail'>
         <label for="Birth-Assigned-Sex">Sex Asigned at Birth: </label>
-        <select name="Sex Assigned at Birth" id="Birth-Assigned-Sex">
+        <select name="SexAssignedAtBirth" id="Birth-Assigned-Sex">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
-        <button id="sign-up-btn" onclick="SignUpFunction()">Sign Up</button>
+        <input type="submit" formaction="/signUp" value='Submit Sign-up information'/>
+        </form>
     </fieldset>
 </aside>
     </div>

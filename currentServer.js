@@ -1,4 +1,4 @@
-/*const express = require('express');
+const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
@@ -11,56 +11,53 @@ app.use(express.static('Static'))
 // })
 
 app.listen(port, () => {
-    console.log('Server started at http://localhost:' + port);
+    console.log('Server started at http://localhost:' + port + '/Sign-in.html');
 })
 
 
-
-//signIn
-app.post('/signIn', (req, res) => {
-    const data = req.body;
-    signIn()
-})
-
-
-//SignUp
-app.post('/signUp', (req, res) => {
-    const data = req.body;
-    SignUpFunction()
-    console.log(data.email);
-})
-
-//Sign-In Function
-//Sign-in/up code
-var currentUserIndex = -1;
 var allUsersPasswords = ["admin"];
 var allUsersGender = ["male"];
 var allUsersParentEmail = ["holden.bronson07.com"];
 var allUsersEmail = ["admin.com"];
-var studentNumbers = ["1", 2, 3]
+var studentNumbers = ["1", '2', '3']
 
-function signIn () {
+app.post('/signIn', (req, res) => {
+    console.log(req.body)
+    var data = req.body;
+    //Sign In
     var possibleUserEmail = data.email;
     var possiblePassword = data.password;
-    var possibleUserIndex = -1;
     var validUserEmail = false;
     var validCorrespondingPassword = false;
     for (var a = 0; a < allUsersEmail.length; a++) {
         if (possibleUserEmail === allUsersEmail[a]) {
             validUserEmail = true;
-            possibleUserIndex = a;
             if (possiblePassword === allUsersPasswords[a]) {
                 validCorrespondingPassword = true;
             }
         }
     }
     if ((validUserEmail === true) && (validCorrespondingPassword === false)) {
-        currentUserIndex = possibleUserIndex;
         window.location.replace("./home.html");
-    }
-}
+        const bcrypt = require('bcrypt')
 
-function SignUpFunction() {
+        const plaintextPassword = possiblePassword;
+
+// Generate a salt (a random string) to add complexity to the hashing process
+        const saltRounds = 10
+        const salt = bcrypt.genSaltSync(saltRounds)
+
+// Hash the password using the generated salt
+        const hashedPassword = bcrypt.hashSync(plaintextPassword, salt)
+        allUsersPasswords.push(hashedPassword);
+    }
+})
+
+
+app.post('/signUp', (req, res) => {
+    console.log(req.body)
+    var data = req.body;
+    //Sign Up
     var newUserEmail = data.email;
     var newUserPassword = data.password;
     var newUserStudentNum = data.studentNumber;
@@ -89,18 +86,6 @@ function SignUpFunction() {
         allUsersParentEmail.push(newUserParentEmail);
         allUsersEmail.push(newUserEmail);
         window.location.replace("./home.html");
-        currentUserIndex = allUsersEmail.length - 1;
+
     }
-}
-
-
-//Sign-out code
-app.post('/signOut', (req, res) => {
-
 })
-
-//Reqest Ride Function
-function requestRide () {
-
-}
-*/
