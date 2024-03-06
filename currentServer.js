@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt')
 
 app.use(express.static('Static'));
 // app.get('/', (req, res) => {
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 var allUsersPasswords = ["admin"];
 var allUsersGender = ["male"];
 var allUsersParentEmail = ["holden.bronson07.com"];
-var allUsersEmail = ["admin.com"];
+var allUsersEmail = ["admin@gmail.com"];
 var studentNumbers = ["1", '2', '3'];
 
 app.post('/signIn', (req, res) => {
@@ -39,7 +40,8 @@ app.post('/signIn', (req, res) => {
         }
     }
     if ((validUserEmail === true) && (validCorrespondingPassword === false)) {
-
+        console.log('signed in!');
+        res.redirect('/home.html')
     }
 })
 
@@ -75,10 +77,21 @@ app.post('/signIn', (req, res) => {
             allUsersParentEmail.push(newUserParentEmail);
             allUsersEmail.push(newUserEmail);
             //window.location.assign('./home.html');
+
+            const plaintextPassword = newUserPassword;
+
+// Generate a salt (a random string) to add complexity to the hashing process
+            const saltRounds = 10
+            const salt = bcrypt.genSaltSync(saltRounds)
+
+// Hash the password using the generated salt
+            const hashedPassword = bcrypt.hashSync(plaintextPassword, salt)
+
+            console.log('Hashed Password:', hashedPassword)
             res.redirect('/home.html');
-            console.log(allUsersPasswords);
+            /*console.log(allUsersPasswords);
             console.log(allUsersGender);
             console.log(allUsersParentEmail);
-            console.log(allUsersEmail)
+            console.log(allUsersEmail)*/
         }
     })

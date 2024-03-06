@@ -1,9 +1,3 @@
-<!--
-  Hit RUN to see this project in action!
-
-  This project will auto-refresh as you edit the HTML, CSS and JS. See README.md for more info (including how to disable auto-refresh and install packages).
--->
-
 <!DOCTYPE html>
 <html>
 <script src="JavaScript.js"></script>
@@ -37,12 +31,12 @@
     <!-- Sign in Box-->
     <fieldset id="sign-in-box">
         <legend>Sign-In</legend>
-        <form>
+        <form method='post'>
         <label for="email-input-sign-in">Email: </label>
         <input type="email" placeholder="Email" id="email-input-sign-in" name="email">
         <label for="password-input-sign-in">Password: </label>
         <input type="password" placeholder="Password" id="password-input-sign-in" name="password">
-        <input type="submit" id="sign-in-btn" formaction="/signIn"/>
+        <input type="submit" id="sign-in-btn" formaction="/signIn" value="Sign In"/>
     </form>
     </fieldset>
     <!-- Sign up Box-->
@@ -62,7 +56,7 @@
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
-        <input type="submit" formaction="/signUp" value='Submit Sign-up information'/>
+        <input type="submit" formaction="/signUp" value='Sign Up'/>
         </form>
     </fieldset>
 </aside>
