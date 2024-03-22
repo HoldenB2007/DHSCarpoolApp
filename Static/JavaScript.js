@@ -28,9 +28,7 @@ function signout () {
     window.location.replace("./Sign-in.html");
 }
 
-document.getElementById("DOMContentLoaded", function(event) {
-    console.log("html files have been loaded")
-});
+
 /*
 document.getElementById("homeLink").addEventListener('click', function() {
     console.log('triggered');

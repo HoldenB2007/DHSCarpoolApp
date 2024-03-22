@@ -63,6 +63,9 @@ app.post('/signIn', (req, res) => {
                         res.redirect('/');
                     }
                 });
+            res.send("Wrong Password")
+        } else {
+            res.send("Account doesn't exist")
         }
     }
 })
