@@ -61,11 +61,12 @@ app.post('/signIn', (req, res) => {
                             gender: allUsersGender[userIndex]
                         }
                         res.redirect('/');
+                    } else {
+                        res.send('Wrong Password');
                     }
                 });
-            res.send("Wrong Password")
         } else {
-            res.send("Account doesn't exist")
+            res.send('Account Not Made')
         }
     }
 })
