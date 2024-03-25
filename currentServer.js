@@ -7,13 +7,25 @@ const bcrypt = require('bcrypt')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const crypto = require('crypto')
+const handlebars = require('express-handlebars');
+
+//app.set('view engine', 'handlebars');
+
+//app.engine('handlebars', handlebars());
 
 function generateSecretKey(length) {
     return crypto.randomBytes(length).toString('hex');
 }
 const secretKey = generateSecretKey(32);
 
+//set up directory for static files
 app.use(express.static('Static'));
+
+// Set the directory where your views (templates) reside
+//app.set('Static', path.join(__dirname, 'Static'));
+
+// Define your routes
+
 app.use(cookieParser());
 app.use(session({
     secret: secretKey,
@@ -60,7 +72,7 @@ app.post('/signIn', (req, res) => {
                             parentEmail: allUsersParentEmail[userIndex],
                             gender: allUsersGender[userIndex]
                         }
-                        res.redirect('/');
+                        res.redirect('/signedIn');
                     } else {
                         res.send('Wrong Password');
                     }
@@ -99,7 +111,7 @@ app.post('/signUp', (req, res) => {
         allUsersGender.push(newUserGender);
         allUsersParentEmail.push(newUserParentEmail);
         allUsersEmail.push(newUserEmail);
-        //window.location.assign('./home.html');
+        //window.location.assign('./home.hbs');
         const plaintextPassword = newUserPassword;
         // Generate a salt (a random string) to add complexity to the hashing process
         const saltRounds = 10
@@ -113,7 +125,7 @@ app.post('/signUp', (req, res) => {
             parentEmail: newUserParentEmail,
             gender: newUserGender
         }
-        res.redirect('/');
+        res.redirect('/signedIn');
     }
 })
 
@@ -132,11 +144,12 @@ app.post('/logout', (req, res) => {
     });
 });
 
-app.get('/', (req, res) => {
+app.get('/signedIn', (req, res) => {
     //check is session exists
     if (req.session.user) {
         //res.send(`Welcome ${req.session.user.email}!`);
         console.log('hello ' + req.session.user.email);
+        //res.render('home', { userEmail: req.session.user.email});
         res.redirect('/home.html');
     }
 })

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="JavaScript.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DHS Carpooling</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div class="wrapper">
+      <header>Welcome {{  userEmail  }}!</header>
+    <div class="wrapper-navbar">
+  <aside class="navbar">
+    <ul class="navbar-links">
+      <li><button id="sign-out" onclick="signout()" formaction="/signOut">Sign Out</button></li>
+      <li><a href="request.html" class="request-page">Request a Ride</a></li>
+      <li><a href="current.html" class="current-page">Current Rides/ Accept Driver</a></li>
+      <li><a href="accept.html" class="accept-page">Accept a Ride</a></li>
+      <li><a href="feedback.html" class="feedback-page">Feedback</a></li>
+    </ul>
+  </aside>
+      </div>
+    <div class="wrapper-content">
+      <div class="content">
+        <h1>DHS Carpooling</h1>
+        <p id="home-paragraph">
+          DHS Carpooling is a website where students can request rides to school events like football games, school dances, and more. A student can either sign up as a rider or driver. A rider can send a request and then a driver can accept the request. Then after, the rider must accept the driver as well. This service is free for students. If a driver successfully gives a student a ride, the driver will recieve 1 million summative extra credit points the their class of choice. 
+        </p>
+      </div>
+    </div>
+    <div class="wrapper-footer">
+    <footer>
+    <section class="contact-us">
+      <h3>Contact Admin</h3>
+    </section>
+    </footer>
+      </div>
+  </div>
+  </body>
+</html>
