@@ -1,4 +1,4 @@
-function signout () {
+/*function signout () {
     const data = { key: 'value' };
 
     // Options for the Fetch API
@@ -25,9 +25,9 @@ function signout () {
         .catch(error => {
             console.error('There was a problem with the POST request:', error);
         });
-    window.location.replace("./Sign-in.html");
+    window.location.replace("./sign-in.html");
 }
-
+*/
 
 /*
 document.getElementById("homeLink").addEventListener('click', function() {

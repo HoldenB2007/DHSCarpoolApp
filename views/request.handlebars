@@ -1,0 +1,27 @@
+<div class="wrapper-content">
+    <header><h1>Request A Ride</h1></header>
+    <div class="ride-info" id="ride-info">
+        <form action="/requestRide" method="POST">
+      <!-- Inputs for inputting ride information-->
+            <label for="Event">Event:</label>
+              <select name="event" id="Event">
+                  <option value="Boys Basketball Game">Boys Basketball Game</option>
+                  <option value="Girls Basketball Game">Girls Basketball Game</option>
+                  <option value="School Play">School Play</option>
+              </select>
+            <div>
+                <label for="Pick-Up-Time-Date">Pick Up Time:</label>
+                <input type="datetime-local" id="Pick-Up-Time-Date" name="pickUpTimeDate"/>
+            </div>
+            <div>
+                <label for="Pick-Up-Location">Pick Up Location:</label>
+                <input type="text" id="Pick-Up-Location" placeholder="Address" name="pickUpLocation"/>
+            </div>
+            <div>
+                <label for="Payment">Payment(optional):</label>
+                <input type="number" id="Payment" placeholder="$" name="paymentAmount"/>
+            </div>
+            <button type="submit" id="Request Button">Upload Request</button>
+        </form>
+    </div>
+</div>

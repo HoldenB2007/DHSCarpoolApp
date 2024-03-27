@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="javaScript.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DHS Carpooling</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="wrapper">
+    <div class="wrapper-navbar">
+        <aside class="navbar">
+            <ul class="navbar-links">
+                <li><form action="/logout" method="POST"><button type="submit" id="logout-button">Logout</button></form></li>
+                <li><a href="/home" class="home-page">Home</a></li>
+                <li><a href="/request" class="request-page">Request a Ride</a></li>
+                <li><a href="/current" class="current-page">Current Rides/ Accept Driver</a></li>
+                <li><a href="/accept" class="accept-page">Accept a Ride</a></li>
+                <li><a href="/feedback" class="feedback-page">Feedback</a></li>
+            </ul>
+        </aside>
+    </div>
+    {{{body}}}
+    <div class="wrapper-footer">
+        <footer>
+            <section class="contact-us">
+                <h3>Contact Admin</h3>
+            </section>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
