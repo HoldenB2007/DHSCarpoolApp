@@ -1,9 +1,19 @@
 <div class="wrapper-content">
-    <header><h1>Ride Requests</h1>
+    <header><h1>Potential Ride Requests</h1>
       <h6>(This page is for drivers)</h6>
     </header>
     <hr>
     <div id="ride-requests">
+            <div class="rideRequest">
+                <p>
+                    Rider Email: {{riderEmail}}<br>
+                    Event: {{event}}<br>
+                    Time/Date: {{timeDate}}<br>
+                    Pick Up Address: {{location}}<br>
+                    Payment: {{payment}}<br>
+                </p>
+                <form action="/driverAccept" method="POST"><button type="submit">Accept</button></form>
+            </div>
     </div>
-      </div>
+</div>
 

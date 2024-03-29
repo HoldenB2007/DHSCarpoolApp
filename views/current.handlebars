@@ -6,6 +6,16 @@
     <div class="wrapper-confirmed">
     <div id="Confirmed-Rides">
       <h2>Confirmed</h2>
+        <div>
+            <p>
+                Driver Email: {{driverEmailConfirmed}}<br>
+                Rider Email: {{riderEmailConfirmed}}<br>
+                Event: {{eventConfirmed}}<br>
+                Time/Date: {{timeDateConfirmed}}<br>
+                Location: {{locationConfirmed}}<br>
+                Payment: {{paymentConfirmed}}<br>
+            </p>
+        </div>
     </div>
     </div>
     <div class="wrapper-requested">
@@ -15,6 +25,17 @@
       </div>
     <div class="wrapper-possible">
     <div id="Possible-Drivers">
-         <h2>Possible Drivers</h2>
+        <h2>Possible Drivers</h2>
+        <div>
+            <p>
+                Potential Driver's Email: {{driverEmailPossible}}<br>
+                Rider Email: {{riderEmailPossible}}<br>
+                Event: {{eventPossible}}<br>
+                Time/Date: {{timeDatePossible}}<br>
+                Location: {{locationPossible}}<br>
+                Payment: {{paymentPossible}}<br>
+            </p>
+            <form action="/riderAccept" method="POST"><button type="submit">Accept Driver</button></form>
+        </div>
     </div>
       </div>

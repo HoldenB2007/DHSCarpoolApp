@@ -48,10 +48,12 @@
         <input type="number" placeholder="8 Digits" id="sign-up-student-number" name='studentNumber'>
         <label for="sign-up-parent-email">Parent Email: </label>
         <input type="email" placeholder="Parent/Guardian Email" id="sign-up-parent-email" name='parentEmail'>
-        <label for="Birth-Assigned-Sex">Sex Asigned at Birth: </label>
+        <label for="Birth-Assigned-Sex">Gender: </label>
         <select name="gender" id="Birth-Assigned-Sex">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+            <option value="Non-binary">Non-binary</option>
+            <option value="preferNotToSay">Prefer Not To Say</option>
         </select>
         <input id="sign-up-btn" type="submit" formaction="/signUp" value='Sign Up'/>
         </form>
