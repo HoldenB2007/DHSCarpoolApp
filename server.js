@@ -13,7 +13,7 @@ let userInfo = {
     gender: ''
 }
 let allRideRequests = [];
-let alldriverAcceptedRides = [];
+let allDriverAcceptedRides = [];
 let allConfirmedRides = [];
 
 
@@ -193,37 +193,7 @@ app.get('/request', (req, res) => {
 
 app.get('/current', (req, res) => {
     if (req.session.user) {
-        if (alldriverAcceptedRides[0] === undefined) {
-            res.render('current', {
-                driverEmailPossible: '',
-                riderEmailPossible: '',
-                eventPossible: '',
-                timeDatePossible: '',
-                locationPossible: '',
-                paymentPossible: '',
-                driverEmailConfirmed: allConfirmedRides[0].driverEmail,
-                riderEmailConfirmed: allConfirmedRides[0].riderEmail,
-                eventConfirmed: allConfirmedRides[0].event,
-                timeDateConfirmed: allConfirmedRides[0].timeDate,
-                locationConfirmed: allConfirmedRides[0].location,
-                paymentConfirmed: '$' + allConfirmedRides[0].payment
-            });
-        } else {
-            res.render('current', {
-                driverEmailPossible: alldriverAcceptedRides[0].driverEmail,
-                riderEmailPossible: alldriverAcceptedRides[0].riderEmail,
-                eventPossible: alldriverAcceptedRides[0].event,
-                timeDatePossible: alldriverAcceptedRides[0].timeDate,
-                locationPossible: alldriverAcceptedRides[0].location,
-                paymentPossible: '$' + alldriverAcceptedRides[0].payment,
-                driverEmailConfirmed: '',
-                riderEmailConfirmed: '',
-                eventConfirmed: '',
-                timeDateConfirmed: '',
-                locationConfirmed: '',
-                paymentConfirmed: ''
-            });
-        }
+        res.render('current', { allDriverAcceptedRides, allConfirmedRides })
     } else {
         res.send('no user signed in')
     }
@@ -231,23 +201,7 @@ app.get('/current', (req, res) => {
 
 app.get('/accept', (req, res) => {
     if (req.session.user) {
-        if (allRideRequests[0] === undefined) {
-            res.render('accept', {
-                riderEmail: '',
-                event: '',
-                timeDate: '',
-                location: '',
-                payment: ''
-            });
-        } else {
-            res.render('accept', {
-                riderEmail: allRideRequests[0].riderEmail,
-                event: allRideRequests[0].event,
-                timeDate: allRideRequests[0].timeDate,
-                location: allRideRequests[0].location,
-                payment: '$' + allRideRequests[0].payment
-            });
-        }
+        res.render('accept',{ allRideRequests })
     } else {
         res.send('no user signed in')
     }
@@ -274,20 +228,22 @@ app.post('/requestRide', (req, res) => {
         payment: req.body.paymentAmount
     };
     allRideRequests.push(requestRideInfo);
-    console.log(allRideRequests[0]);
     res.render('request');
 });
 
 app.post( '/driverAccept', (req, res) => {
-    alldriverAcceptedRides[0] = allRideRequests[0];
-    allRideRequests.splice(0,1);
-    alldriverAcceptedRides[0].driverEmail = req.session.user.email;
+    const rideIndex = req.body.requestIndex;
+    allDriverAcceptedRides.push(allRideRequests[rideIndex]);
+    allRideRequests.splice(rideIndex,1);
+    console.log(req.session.user.email);
+    allDriverAcceptedRides[allDriverAcceptedRides.length - 1].driverEmail = req.session.user.email;
     res.redirect('accept');
 });
 
 app.post('/riderAccept', (req, res) => {
-    allConfirmedRides[0] = alldriverAcceptedRides[0];
-    alldriverAcceptedRides.splice(0,1);
+    const rideIndex = req.body.driverAcceptIndex;
+    allConfirmedRides.push(allDriverAcceptedRides[rideIndex]);
+    allDriverAcceptedRides.splice(rideIndex,1);
     res.redirect('current');
 });
 

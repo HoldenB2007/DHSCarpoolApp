@@ -85,15 +85,15 @@ body {
   text-align: center;
   border-left: solid;
   border-left-width: 1.5px;
+  border-right: solid;
+  border-right-width: 1.5px;
+  height: 325px;
 }
 
 .wrapper-requested {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
   text-align: center;
-  border-left: solid;
-  border-left-width: 1.5px;
-  height: 325px;
 }
 
 .wrapper-possible {
@@ -110,6 +110,14 @@ body {
   background-color: #cccccc;
 }
 
-.ride-Requests {
-  border: 2px darkred;
+.rideRequest {
+  border: solid red 1px;
+}
+
+.confirmedRide {
+  border: solid red 1px;
+}
+
+.potentialRide {
+  border: solid red 1px;
 }

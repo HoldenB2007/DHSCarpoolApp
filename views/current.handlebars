@@ -6,16 +6,22 @@
     <div class="wrapper-confirmed">
     <div id="Confirmed-Rides">
       <h2>Confirmed</h2>
-        <div>
-            <p>
-                Driver Email: {{driverEmailConfirmed}}<br>
-                Rider Email: {{riderEmailConfirmed}}<br>
-                Event: {{eventConfirmed}}<br>
-                Time/Date: {{timeDateConfirmed}}<br>
-                Location: {{locationConfirmed}}<br>
-                Payment: {{paymentConfirmed}}<br>
-            </p>
-        </div>
+        {{#each allConfirmedRides}}
+            <div class="confirmedRide">
+                <p>
+                    Potential Driver's Email: {{this.driverEmail}}<br>
+                    Rider Email: {{this.riderEmail}}<br>
+                    Event: {{this.event}}<br>
+                    Time/Date: {{this.timeDate}}<br>
+                    Location: {{this.location}}<br>
+                    Payment: {{this.payment}}<br>
+                </p>
+                <form action="/deleteConfirmedRide" method="POST">
+                    <input type="hidden" name="deleteConfirmedIndex" value="{{@index}}" />
+                    <button type="submit">Delete Ride</button>
+                </form>
+            </div>
+        {{/each}}
     </div>
     </div>
     <div class="wrapper-requested">
@@ -26,16 +32,22 @@
     <div class="wrapper-possible">
     <div id="Possible-Drivers">
         <h2>Possible Drivers</h2>
-        <div>
-            <p>
-                Potential Driver's Email: {{driverEmailPossible}}<br>
-                Rider Email: {{riderEmailPossible}}<br>
-                Event: {{eventPossible}}<br>
-                Time/Date: {{timeDatePossible}}<br>
-                Location: {{locationPossible}}<br>
-                Payment: {{paymentPossible}}<br>
-            </p>
-            <form action="/riderAccept" method="POST"><button type="submit">Accept Driver</button></form>
-        </div>
+        {{#each allDriverAcceptedRides}}
+            <div class="potentialRide">
+                <h3>{{this.driverEmail}} wants to drive you!</h3>
+                    <p>
+                        Potential Driver's Email: {{this.driverEmail}}<br>
+                        Rider Email: {{this.riderEmail}}<br>
+                        Event: {{this.event}}<br>
+                        Time/Date: {{this.timeDate}}<br>
+                        Location: {{this.location}}<br>
+                        Payment: {{this.payment}}<br>
+                    </p>
+                <form action="/riderAccept" method="POST">
+                    <input type="hidden" name="driverAcceptIndex" value="{{@index}}" />
+                    <button type="submit">Accept Driver</button>
+                </form>
+            </div>
+        {{/each}}
     </div>
-      </div>
+    </div>
