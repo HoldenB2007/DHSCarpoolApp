@@ -192,10 +192,41 @@ app.get('/request', (req, res) => {
 });
 
 app.get('/current', (req, res) => {
+    let userConfirmedRides = filterConfirmedRides(allConfirmedRides);
+    let userRequestedRides = filterRiderRides(allRideRequests);
+    let userAcceptedRides = filterRiderRides(allDriverAcceptedRides);
+
     if (req.session.user) {
-        res.render('current', { allDriverAcceptedRides, allConfirmedRides })
+        res.render('current', { userConfirmedRides, userRequestedRides, userAcceptedRides });
     } else {
         res.send('no user signed in')
+    }
+
+    function filterConfirmedRides (largeConfirmedList) {
+        let filteredList = [];
+        if (largeConfirmedList.length === 0) {
+            return filteredList;
+        }
+        for (let u = 0; u < largeConfirmedList.length; u++) {
+            if ((req.session.user.email === largeConfirmedList.riderEmail[u]) || (req.session.user.email === largeConfirmedList.driverEmail[u])) {
+                filteredList.push(largeConfirmedList[u]);
+            }
+        }
+        return filteredList;
+    }
+
+    function filterRiderRides (largeList) {
+        let filteredList = [];
+        if (largeList.length === 0) {
+            return filteredList;
+        }
+        for (let u = 0; u < largeList.length; u++) {
+            if (req.session.user.email === largeList.riderEmail[u]) {
+                filteredList.push(largeList[u]);
+            }
+
+        }
+        return filteredList;
     }
 });
 

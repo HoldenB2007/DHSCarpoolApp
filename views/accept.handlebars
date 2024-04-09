@@ -12,7 +12,7 @@
                     Event: {{this.event}}<br>
                     Time/Date: {{this.timeDate}}<br>
                     Pick Up Address: {{this.location}}<br>
-                    Payment: {{this.payment}}<br>
+                    Payment: ${{this.payment}}<br>
                 </p>
                 <form action="/driverAccept" method="POST">
                     <input type="hidden" name="requestIndex" value="{{@index}}" />

@@ -14,7 +14,7 @@
                     Event: {{this.event}}<br>
                     Time/Date: {{this.timeDate}}<br>
                     Location: {{this.location}}<br>
-                    Payment: {{this.payment}}<br>
+                    Payment: ${{this.payment}}<br>
                 </p>
                 <form action="/deleteConfirmedRide" method="POST">
                     <input type="hidden" name="deleteConfirmedIndex" value="{{@index}}" />
@@ -25,13 +25,27 @@
     </div>
     </div>
     <div class="wrapper-requested">
-    <div id="Requested-Rides">
-      <h2>Requested</h2>
-    </div>
+        <div id="Requested-Rides">
+            <h2>Your Requested</h2>
+            {{#each allRideRequests}}
+                <div class="confirmedRide">
+                    <p>
+                        Event: {{this.event}}<br>
+                        Time/Date: {{this.timeDate}}<br>
+                        Location: {{this.location}}<br>
+                        Payment: ${{this.payment}}<br>
+                    </p>
+                    <form action="/deleteConfirmedRide" method="POST">
+                        <input type="hidden" name="deleteConfirmedIndex" value="{{@index}}" />
+                        <button type="submit">Delete Ride</button>
+                    </form>
+                </div>
+            {{/each}}
       </div>
+    </div>
     <div class="wrapper-possible">
     <div id="Possible-Drivers">
-        <h2>Possible Drivers</h2>
+        <h2>Accepted Rides</h2>
         {{#each allDriverAcceptedRides}}
             <div class="potentialRide">
                 <h3>{{this.driverEmail}} wants to drive you!</h3>
@@ -41,7 +55,7 @@
                         Event: {{this.event}}<br>
                         Time/Date: {{this.timeDate}}<br>
                         Location: {{this.location}}<br>
-                        Payment: {{this.payment}}<br>
+                        Payment: ${{this.payment}}<br>
                     </p>
                 <form action="/riderAccept" method="POST">
                     <input type="hidden" name="driverAcceptIndex" value="{{@index}}" />
