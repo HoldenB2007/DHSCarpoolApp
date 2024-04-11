@@ -208,7 +208,7 @@ app.get('/current', (req, res) => {
             return filteredList;
         }
         for (let u = 0; u < largeConfirmedList.length; u++) {
-            if ((req.session.user.email === largeConfirmedList.riderEmail[u]) || (req.session.user.email === largeConfirmedList.driverEmail[u])) {
+            if ((req.session.user.email === largeConfirmedList[u].riderEmail) || (req.session.user.email === largeConfirmedList[u].driverEmail)) {
                 filteredList.push(largeConfirmedList[u]);
             }
         }
@@ -221,7 +221,7 @@ app.get('/current', (req, res) => {
             return filteredList;
         }
         for (let u = 0; u < largeList.length; u++) {
-            if (req.session.user.email === largeList.riderEmail[u]) {
+            if (req.session.user.email === largeList[u].riderEmail) {
                 filteredList.push(largeList[u]);
             }
 
@@ -231,10 +231,24 @@ app.get('/current', (req, res) => {
 });
 
 app.get('/accept', (req, res) => {
+    let potentialRideRequests = filterPotentialRides(allRideRequests);
     if (req.session.user) {
-        res.render('accept',{ allRideRequests })
+        res.render('accept',{ potentialRideRequests })
     } else {
         res.send('no user signed in')
+    }
+
+    function filterPotentialRides (largeList) {
+        let filteredList = [];
+        if (largeList.length === 0) {
+            return filteredList;
+        }
+        for (let u = 0; u < largeList.length; u++) {
+            if (req.session.user.email !== largeList[u].riderEmail) {
+                filteredList.push(largeList[u]);
+            }
+        }
+        return filteredList;
     }
 });
 
@@ -256,9 +270,11 @@ app.post('/requestRide', (req, res) => {
         event: req.body.event,
         timeDate: req.body.pickUpTimeDate,
         location: req.body.pickUpLocation,
-        payment: req.body.paymentAmount
+        payment: req.body.paymentAmount,
+        rideIndex: -1
     };
     allRideRequests.push(requestRideInfo);
+    allRideRequests[allRideRequests.length - 1].rideIndex = allRideRequests.length - 1;
     res.render('request');
 });
 
@@ -266,8 +282,8 @@ app.post( '/driverAccept', (req, res) => {
     const rideIndex = req.body.requestIndex;
     allDriverAcceptedRides.push(allRideRequests[rideIndex]);
     allRideRequests.splice(rideIndex,1);
-    console.log(req.session.user.email);
     allDriverAcceptedRides[allDriverAcceptedRides.length - 1].driverEmail = req.session.user.email;
+    allDriverAcceptedRides[allDriverAcceptedRides.length - 1].rideIndex = allDriverAcceptedRides.length -1;
     res.redirect('accept');
 });
 
@@ -275,6 +291,7 @@ app.post('/riderAccept', (req, res) => {
     const rideIndex = req.body.driverAcceptIndex;
     allConfirmedRides.push(allDriverAcceptedRides[rideIndex]);
     allDriverAcceptedRides.splice(rideIndex,1);
+    allConfirmedRides[allConfirmedRides.length - 1].rideIndex = allConfirmedRides.length - 1;
     res.redirect('current');
 });
 

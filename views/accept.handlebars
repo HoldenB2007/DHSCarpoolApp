@@ -4,7 +4,7 @@
     </header>
     <hr>
     <div id="ride-requests">
-        {{#each allRideRequests}}
+        {{#each potentialRideRequests}}
             <div class="rideRequest">
                 <h1>{{this.riderEmail}} is looking for a Driver</h1>
                 <p>
@@ -15,7 +15,7 @@
                     Payment: ${{this.payment}}<br>
                 </p>
                 <form action="/driverAccept" method="POST">
-                    <input type="hidden" name="requestIndex" value="{{@index}}" />
+                    <input type="hidden" name="requestIndex" value="{{this.rideIndex}}" />
                     <button type="submit">Accept</button>
                 </form>
             </div>
