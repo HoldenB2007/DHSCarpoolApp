@@ -16,9 +16,11 @@
                     Location: {{this.location}}<br>
                     Payment: ${{this.payment}}<br>
                 </p>
-                <form action="/deleteConfirmedRide" method="POST">
-                    <input type="hidden" name="deleteConfirmedIndex" value="{{this.rideIndex}}" />
-                    <button type="submit">Delete Ride</button>
+                <form action="/deleteRide" method="POST">
+                    <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
+                    <input type="hidden" name="mainList" value="{{this.mainList}}" />
+                    <input type="hidden" name="currentScreen" value="current" />
+                    <button id='deleteButton' type="submit">Delete Ride</button>
                 </form>
             </div>
         {{/each}}
@@ -28,16 +30,18 @@
         <div id="Requested-Rides">
             <h2>Your Requested</h2>
             {{#each userRequestedRides}}
-                <div class="confirmedRide">
+                <div class="requestedRide">
                     <p>
                         Event: {{this.event}}<br>
                         Time/Date: {{this.timeDate}}<br>
                         Location: {{this.location}}<br>
                         Payment: ${{this.payment}}<br>
                     </p>
-                    <form action="/deleteConfirmedRide" method="POST">
-                        <input type="hidden" name="deleteConfirmedIndex" value="{{this.rideIndex}}" />
-                        <button type="submit">Delete Ride</button>
+                    <form action="/deleteRide" method="POST">
+                        <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
+                        <input type="hidden" name="mainList" value="{{this.mainList}}" />
+                        <input type="hidden" name="currentScreen" value="current" />
+                        <button id='deleteButton' type="submit">Delete Ride</button>
                     </form>
                 </div>
             {{/each}}
@@ -58,8 +62,11 @@
                         Payment: ${{this.payment}}<br>
                     </p>
                 <form action="/riderAccept" method="POST">
-                    <input type="hidden" name="driverAcceptIndex" value="{{this.rideIndex}}" />
+                    <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
+                    <input type="hidden" name="mainList" value="{{this.mainList}}" />
+                    <input type="hidden" name="currentScreen" value="current" />
                     <button type="submit">Accept Driver</button>
+                    <button id='deleteButton' type="submit" formaction="/deleteRide">Delete Ride</button>
                 </form>
             </div>
         {{/each}}

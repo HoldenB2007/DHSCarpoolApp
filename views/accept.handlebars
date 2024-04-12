@@ -15,7 +15,8 @@
                     Payment: ${{this.payment}}<br>
                 </p>
                 <form action="/driverAccept" method="POST">
-                    <input type="hidden" name="requestIndex" value="{{this.rideIndex}}" />
+                    <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
+                    <input type="hidden" name="currentScreen" value="accept" />
                     <button type="submit">Accept</button>
                 </form>
             </div>

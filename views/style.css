@@ -121,3 +121,7 @@ body {
 .potentialRide {
   border: solid red 1px;
 }
+
+.requestedRide {
+  border: solid red 1px;
+}
