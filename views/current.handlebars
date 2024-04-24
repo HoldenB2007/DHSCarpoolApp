@@ -19,6 +19,7 @@
                 <form action="/deleteRide" method="POST">
                     <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
                     <input type="hidden" name="mainList" value="{{this.mainList}}" />
+                    <input type="hidden" name="rideIdNum" value="{{this.rideId}}" />
                     <input type="hidden" name="currentScreen" value="current" />
                     <button id='deleteButton' type="submit">Delete Ride</button>
                 </form>
@@ -41,6 +42,7 @@
                         <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
                         <input type="hidden" name="mainList" value="{{this.mainList}}" />
                         <input type="hidden" name="currentScreen" value="current" />
+                        <input type="hidden" name="rideIdNum" value="{{this.rideId}}" />
                         <button id='deleteButton' type="submit">Delete Ride</button>
                     </form>
                 </div>
@@ -65,6 +67,7 @@
                     <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
                     <input type="hidden" name="mainList" value="{{this.mainList}}" />
                     <input type="hidden" name="currentScreen" value="current" />
+                    <input type="hidden" name="rideIdNum" value="{{this.rideId}}" />
                     <button type="submit">Accept Driver</button>
                     <button id='deleteButton' type="submit" formaction="/deleteRide">Delete Ride</button>
                 </form>

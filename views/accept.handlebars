@@ -16,6 +16,8 @@
                 </p>
                 <form action="/driverAccept" method="POST">
                     <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
+                    <input type="hidden" name="mainList" value="{{this.mainList}}" />
+                    <input type="hidden" name="rideIdNum" value="{{this.rideId}}" />
                     <input type="hidden" name="currentScreen" value="accept" />
                     <button type="submit">Accept</button>
                 </form>
