@@ -63,12 +63,12 @@
                         Location: {{this.location}}<br>
                         Payment: ${{this.payment}}<br>
                     </p>
-                <form action="/riderAccept" method="POST">
+                <form method="POST">
                     <input type="hidden" name="rideIndex" value="{{this.rideIndex}}" />
                     <input type="hidden" name="mainList" value="{{this.mainList}}" />
                     <input type="hidden" name="currentScreen" value="current" />
                     <input type="hidden" name="rideIdNum" value="{{this.rideId}}" />
-                    <button type="submit">Accept Driver</button>
+                    <button type="submit" formaction="/riderAccept">Accept Driver</button>
                     <button id='deleteButton' type="submit" formaction="/deleteRide">Delete Ride</button>
                 </form>
             </div>
