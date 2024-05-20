@@ -306,6 +306,41 @@ app.post( '/driverAccept', (req, res) => {
             res.send('Rider either deleted or already accepted. Please go back and refresh page.');
         }
     }
+    if (list === 'allRideRequests') {
+        if (rideIndex >= allRideRequests.length) {
+            console.log('Yooo');
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.')
+        }
+    } else if (list === 'allDriverAcceptedRides') {
+        if (rideIndex >= allDriverAcceptedRides.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+        }
+    } else if (list === 'allConfirmedRides') {
+        if (rideIndex >= allConfirmedRides.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+        }
+    }
+    if (exist === true) {
+        if (list === 'allRideRequests') {
+            if (allRideRequests[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.')
+            }
+        } else if (list === 'allDriverAcceptedRides') {
+            if (allDriverAcceptedRides[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+            }
+        } else if (list === 'allConfirmedRides') {
+            if (allConfirmedRides[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+            }
+        }
+    }
     if (exist === true) {
         allDriverAcceptedRides.push(allRideRequests[rideIndex]);
         allRideRequests.splice(rideIndex, 1);
@@ -340,6 +375,40 @@ app.post('/riderAccept', (req, res) => {
         if (allConfirmedRides.length < 1) {
             exist = false;
             res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+        }
+    }
+    if (list === 'allRideRequests') {
+        if (rideIndex >= allRideRequests.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.')
+        }
+    } else if (list === 'allDriverAcceptedRides') {
+        if (rideIndex >= allDriverAcceptedRides.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+        }
+    } else if (list === 'allConfirmedRides') {
+        if (rideIndex >= allConfirmedRides.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+        }
+    }
+    if (exist === true) {
+        if (list === 'allRideRequests') {
+            if (allRideRequests[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.')
+            }
+        } else if (list === 'allDriverAcceptedRides') {
+            if (allDriverAcceptedRides[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+            }
+        } else if (list === 'allConfirmedRides') {
+            if (allConfirmedRides[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+            }
         }
     }
     if (exist === true) {
@@ -382,7 +451,40 @@ app.post('/deleteRide', (req, res) => {
             res.send('Rider either deleted or already accepted. Please go back and refresh page.');
         }
     }
-
+    if (list === 'allRideRequests') {
+        if (rideIndex >= allRideRequests.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.')
+        }
+    } else if (list === 'allDriverAcceptedRides') {
+        if (rideIndex >= allDriverAcceptedRides.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+        }
+    } else if (list === 'allConfirmedRides') {
+        if (rideIndex >= allConfirmedRides.length) {
+            exist = false;
+            res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+        }
+    }
+    if (exist === true) {
+        if (list === 'allRideRequests') {
+            if (allRideRequests[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.')
+            }
+        } else if (list === 'allDriverAcceptedRides') {
+            if (allDriverAcceptedRides[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+            }
+        } else if (list === 'allConfirmedRides') {
+            if (allConfirmedRides[rideIndex].rideId.toString() !== rideId) {
+                exist = false;
+                res.send('Rider either deleted or already accepted. Please go back and refresh page.');
+            }
+        }
+    }
     if (exist === true) {
         const currentScreen = req.body.currentScreen;
         if (list === 'allConfirmedRides') {
