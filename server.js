@@ -56,7 +56,7 @@ let allUsersPasswords = [adminHashedPassword];
 let allUsersGender = ["male"];
 let allUsersParentEmail = ["holden.bronson07.com"];
 let allUsersEmail = ["admin@gmail.com"];
-let studentNumbers = ["1", '2', '3'];
+let studentNumbers = ['1', '2', '3'];
 
 app.post('/signIn', (req, res) => {
     const { emailSignIn, passwordSignIn } = req.body;
