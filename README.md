@@ -1,4 +1,4 @@
-THE FIRST PROJECT I ever worked on in high school. 
+## THE FIRST PROJECT I ever worked on in high school.
 
 Lmao, still I shocked I pulled off building a functional prototype pre-AI with zero CS experience and 
 learning everything from stack overflow and W3 Schools
